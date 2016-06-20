@@ -1,5 +1,6 @@
 // import { watchLoadCourses, watchCreateCourse} from './courseSagas';
 import {watchLoginRequest} from './userSaga';
+import {watchProjectSaveReq, watchProjectLoadReq} from './ProjectSaga';
 
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
@@ -7,6 +8,8 @@ export default function* rootSaga() {
     // watchLoadCourses(),
     // watchAuthors(),
     // watchCreateCourse()
-    watchLoginRequest()
+    watchLoginRequest(),
+    watchProjectSaveReq(),
+    watchProjectLoadReq()
   ]
 }

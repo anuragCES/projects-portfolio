@@ -1,22 +1,20 @@
 import * as ActionTypes from './../actions/actionType';
 import { takeEvery, delay } from 'redux-saga';
 import { put, call , take} from 'redux-saga/effects';
-import userApi from './../api/userApi'
+import userApi from './../api/userApi';
+import {browserHistory} from 'react-router';
 
 export function* authenticateUser(userData) {
-    console.log("watchLoginRequest");
-    console.log(userData);
     try {
-      const users = yield userApi.authorizeUser(userData);
-      console.log(users);
-      // yield call(api.buyProducts, cart)
-      // yield put(actions.checkoutSuccess(cart))
+      const user = yield userApi.authorizeUser(userData);
+      yield put({type: ActionTypes.LOGIN_SUCCESS, user});
+      browserHistory.push('/');
     } catch(error) {
-      //yield put(actions.checkoutFailure(error))
+      console.log(error);
+      yield put({type: ActionTypes.LOGIN_FAILED, error});
     }
 }
 
 export function* watchLoginRequest() {
-    console.log(ActionTypes.LOGIN_START);
     yield* takeEvery(ActionTypes.LOGIN_START, authenticateUser)
 }

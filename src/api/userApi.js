@@ -18,14 +18,16 @@ const users = [
 
 class UserApi {
     
-    static authorizeUser(user) {
-        console.log("1");
+    static authorizeUser(data) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                console.log("2");
-               // if(user.username.match(/ain/g).length > 0){
-                    resolve(users);    
-                //}
+                if(data.user.username.match(/ces/g)){
+                    var numRand = Math.floor(Math.random() * 2);
+                    resolve(users[numRand]);    
+                }
+                else{
+                    reject({status: 401, message: "Invalid user"});
+                }
                 
             }, 1000);
         });

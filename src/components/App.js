@@ -1,22 +1,19 @@
 import React from 'react';
 import Header from './common/Header';
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
 
 class App extends React.Component{
 
     constructor(props, context){
         super(props, context);
-
-        this.state = {
-            loggedIn : false
-        }
     }
 
     render(){
         return (
             <div className="container-fluid">
                  {
-                    this.state.loggedIn ? (
+                    this.props.loggedIn ? (
                         <Header />
                     ) : (
                         <Link to="/login">Sign in</Link>
@@ -28,4 +25,10 @@ class App extends React.Component{
     }
 }
 
-export default App;
+function mapStateToProps(state, ownProp) {
+    return {
+        loggedIn: Object.keys(state.user).length>0
+    };
+}
+
+export default connect(mapStateToProps)(App);

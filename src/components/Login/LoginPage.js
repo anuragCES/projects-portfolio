@@ -28,7 +28,6 @@ class Login extends React.Component {
     }
 
     authorizeUser(event) {
-        console.log(this.state.credentials);
         event.preventDefault();
         this.props.actions.checkUser(this.state.credentials);
     }
@@ -45,22 +44,10 @@ class Login extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-    // const courseId = ownProps.params.id; // from the path `/course/:id`
-
-    // let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
-
-    // if (courseId && state.courses.length > 0) {
-    //     course = getCourseById(state.courses, courseId);
-    // }
-
-    // return {
-    //     course: course,
-    //     authors: authorsFormattedForDropdown(state.authors)
-    // };
+    return state;
 }
 
 function mapDispatchToProps(dispatch) {
-    console.log(userActions);
     return {
         actions: bindActionCreators(userActions, dispatch)
     };

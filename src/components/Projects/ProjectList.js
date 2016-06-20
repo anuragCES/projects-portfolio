@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectCard from './ProjectCard';
 
 const ProjectList = ({projects}) => {
-
+    console.log(projects);
     return (
         <div className="container">
             <h1>Project List</h1>

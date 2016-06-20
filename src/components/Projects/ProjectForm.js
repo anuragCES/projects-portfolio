@@ -35,8 +35,8 @@ const ProjectForm = ({project, employees, onSave, onChange, saving,  errors}) =>
               <label htmlFor="comment">Summary</label>
               <textarea className="form-control"
                         rows="5"
-                        name="length"
-                        value={project.length}
+                        name="summary"
+                        value={project.summary}
                         onChange={onChange}>
               </textarea>
           </div>

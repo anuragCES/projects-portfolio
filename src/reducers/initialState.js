@@ -1,3 +1,5 @@
 export default {
-    userData: []
+    userData: [],
+    projectData: [],
+    isLoggedIn: false
 };
