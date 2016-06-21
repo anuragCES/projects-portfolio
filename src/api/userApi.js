@@ -18,6 +18,14 @@ const users = [
 
 class UserApi {
     
+    static getAllEmployees() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(Object.assign([], users));
+            }, delay);
+        });
+    }
+    
     static authorizeUser(data) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {

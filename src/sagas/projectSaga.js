@@ -1,15 +1,13 @@
 import * as ActionTypes from './../actions/actionType';
 import { takeEvery, delay } from 'redux-saga';
-import { put, call , take} from 'redux-saga/effects';
+import { put, call, take} from 'redux-saga/effects';
 import projectApi from './../api/projectApi';
 import {browserHistory} from 'react-router';
 
-export function* saveProjectData(data) {
+export function* saveProjectData(action) {
     console.log("Project Saga 2");
     try {
-        console.log(data.project);
-        const projects = yield projectApi.saveProject(data.project);
-        console.log(projects);
+        const projects = yield projectApi.saveProject(action.project);
         yield put({type: ActionTypes.PROJECT_SAVE_SUCCESS, projects});
         browserHistory.push('/');
     } catch(error) {

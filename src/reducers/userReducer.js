@@ -10,6 +10,10 @@ export default function userReducer(state = InitialState.userData, action = []){
             return action.user;
         }
         
+        case ActionTypes.LOAD_EMP_SUCCESS: {
+            return action.emps;
+        }
+        
         default : 
             return state;
     } 

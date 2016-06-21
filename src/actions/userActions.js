@@ -6,3 +6,9 @@ export function checkUser(user) {
         user
     }
 };
+
+export function loadEmp() {
+    return {
+        type: ActionTypes.LOAD_EMP_START
+    }
+};

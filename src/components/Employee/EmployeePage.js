@@ -1,20 +1,16 @@
 import React from 'react';
 import EmployeeList from './EmployeeList';
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as usersActions from './../../actions/userActions';
 
 class EmployeePage extends React.Component {
 
     constructor(props, context){
         super(props, context);
-
         this.state = {
-            employees: [{
-                id: 1
-            },{
-                id: 2
-            },{
-                id: 3
-            }]
+            employees: this.props.employees
         };
     }
 
@@ -28,4 +24,16 @@ class EmployeePage extends React.Component {
     };
 }
 
-export default EmployeePage;
+function mapStateToProps(state, ownProps) {
+    return {
+        employees: state.employees
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(usersActions, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeePage);

@@ -3,7 +3,7 @@ import InitialState from './initialState';
 
 export default function projectReducer(state = InitialState.projectData, action = []){
     "use strict";
-
+    console.log("reducer");
     switch (action.type){
 
         case ActionTypes.PROJECT_SAVE_SUCCESS: {

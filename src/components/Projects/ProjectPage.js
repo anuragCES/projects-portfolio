@@ -11,16 +11,12 @@ class ProjectPage extends React.Component {
         super(props, context);
     }
 
+    deleteProject(event){
+        event.preventDefault();
+        
+    }
+
     render() {
-        let temp = [{
-                id: 1
-            },{
-                id: 2
-            },{
-                id: 3
-            }];
-        console.log(this.props.projects);
-        console.log(temp);
         return (
             <div className="container">
                 <h1>Projects</h1>

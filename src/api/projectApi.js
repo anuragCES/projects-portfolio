@@ -27,12 +27,13 @@ class projectApi {
     static getProjects(){
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                    resolve(projects);
+                    resolve(Object.assign([], projects));
             }, 1000);
         });
     }
 
     static saveProject(project) {
+        project = Object.assign({}, project); // to avoid manipulating 
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                     //Just simulating creation here.
@@ -42,6 +43,18 @@ class projectApi {
                     projects.push(project);
                     console.log(projects);
                     resolve(projects);
+            }, 1000);
+        });
+    }
+    
+    static deleteProject(projectId) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const indexOfProjectToDelete = projects.findIndex(project => {
+                    project.authorId == projectId;
+                });
+                projects.splice(indexOfProjectToDelete, 1);
+                resolve();
             }, 1000);
         });
     }

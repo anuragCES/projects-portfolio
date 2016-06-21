@@ -3,12 +3,14 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as projectActions from './../../actions/projectActions';
+import * as usersActions from './../../actions/userActions';
 
 class HomePage extends React.Component {
 
     constructor(props, context){
         super(props, context);
-        this.props.actions.loadProjects();
+        this.props.projects.loadProjects();
+        this.props.emp.loadEmp();
     }
 
     render() {
@@ -29,7 +31,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(projectActions, dispatch)
+        projects: bindActionCreators(projectActions, dispatch),
+        emp: bindActionCreators(usersActions, dispatch)
     };
 }
 
